@@ -4,3 +4,9 @@ obj
 
 # mstest test results
 TestResults
+
+# Resharper
+_ReSharper.Mvc.Html.Bootstrap
+
+# Visual Studio
+*.suo
