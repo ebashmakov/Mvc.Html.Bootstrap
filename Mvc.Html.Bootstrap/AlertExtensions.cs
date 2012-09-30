@@ -40,17 +40,28 @@ namespace Mvc.Html.Bootstrap
 
         public static MvcHtmlString Alert(this HtmlHelper helper, AlertType type, string text, string header, bool close)
         {
-            return Alert(helper, type, text, header, ButtonTag.Anchor);
+            return Alert(helper, type, text, header, close, false);
         }
 
-        public static MvcHtmlString Alert(this HtmlHelper helper, AlertType type, string text, string header, ButtonTag closeButton)
+        public static MvcHtmlString Alert(this HtmlHelper helper, AlertType type, string text, string header, bool close, bool block)
+        {
+            return close
+                       ? Alert(helper, type, text, header, ButtonTag.Anchor, block)
+                       : Alert(helper, type, text, header, null, block);
+        }
+
+        public static MvcHtmlString Alert(this HtmlHelper helper, AlertType type, string text, string header, ButtonTag? closeButton, bool block)
         {
             var builder = new TagBuilder("div");
 
+            if (block) builder.AddCssClass("alert-block");
             builder.AddCssClass(type.ToCssClass());
             builder.AddCssClass("alert");
 
-            builder.InnerHtml += DismissButton(helper, closeButton);
+            if (closeButton.HasValue)
+            {
+                builder.InnerHtml += DismissButton(helper, closeButton.Value);
+            }
 
             if (!string.IsNullOrEmpty(header))
             {
