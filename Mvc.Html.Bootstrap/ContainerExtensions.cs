@@ -6,29 +6,39 @@ namespace Mvc.Html.Bootstrap
 {
     public static class ContainerExtensions
     {
-        internal static MvcForm ContainerHelper(this HtmlHelper html, object htmlAttributes)
+        internal static MvcContainer ContainerHelper(this HtmlHelper html, string tagName)
+        {
+            return ContainerHelper(html, tagName, null);
+        }
+
+        internal static MvcContainer ContainerHelper(this HtmlHelper html, object htmlAttributes)
         {
             return ContainerHelper(html, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
         }
 
-        internal static MvcForm ContainerHelper(this HtmlHelper html, IDictionary<string, object> htmlAttributes)
+        internal static MvcContainer ContainerHelper(this HtmlHelper html, IDictionary<string, object> htmlAttributes)
         {
-            var tagBuilder = new TagBuilder("div");
+            return ContainerHelper(html, "div", htmlAttributes);
+        }
+
+        internal static MvcContainer ContainerHelper(this HtmlHelper html, string tagName, IDictionary<string, object> htmlAttributes)
+        {
+            var tagBuilder = new TagBuilder(tagName);
             tagBuilder.MergeAttributes(htmlAttributes);
 
             html.ViewContext.Writer.Write(tagBuilder.ToString(TagRenderMode.StartTag));
 
-            return new MvcForm(html.ViewContext); ;
+            return new MvcContainer(html.ViewContext, tagName);
         }
 
-        public static void EndContainer(this HtmlHelper html)
+        public static void EndContainer(this HtmlHelper html, string tagName)
         {
-            EndContainer(html.ViewContext);
+            EndContainer(html.ViewContext, tagName);
         }
 
-        internal static void EndContainer(ViewContext viewContext)
+        internal static void EndContainer(ViewContext viewContext, string tagName)
         {
-            viewContext.Writer.Write("</div>");
+            viewContext.Writer.Write("</{0}>", tagName);
         }
     }
 }

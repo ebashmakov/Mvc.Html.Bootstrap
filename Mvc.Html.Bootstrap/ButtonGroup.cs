@@ -24,12 +24,12 @@ namespace Mvc.Html.Bootstrap
             }
         }
 
-        public static MvcForm BeginButtonGroup(this HtmlHelper html)
+        public static MvcContainer BeginButtonGroup(this HtmlHelper html)
         {
             return BeginButtonGroup(html, Direction.Horizontal);
         }
 
-        public static MvcForm BeginButtonGroup(this HtmlHelper html, Direction direction)
+        public static MvcContainer BeginButtonGroup(this HtmlHelper html, Direction direction)
         {
             var cssClass = direction == Direction.Vertical
                 ? Css.VerticalGroup
@@ -37,7 +37,7 @@ namespace Mvc.Html.Bootstrap
             return html.ContainerHelper(new { @class = cssClass });
         }
 
-        public static MvcForm BeginButtonToolbar(this HtmlHelper html)
+        public static MvcContainer BeginButtonToolbar(this HtmlHelper html)
         {
             return html.ContainerHelper(new { @class = Css.Toolbar });
         }
