@@ -46,6 +46,7 @@
     <Compile Include="ButtonExtensions.cs" />
     <Compile Include="ButtonGroup.cs" />
     <Compile Include="ContainerExtensions.cs" />
+    <Compile Include="FormExtensions.cs" />
     <Compile Include="ImageExtensions.cs" />
     <Compile Include="MvcContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
