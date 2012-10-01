@@ -24,6 +24,8 @@ namespace Mvc.Html.Bootstrap
         {
             switch (type)
             {
+                case ButtonType.Defualt:
+                    return "btn";
                 case ButtonType.Primary:
                     return "btn-primary";
                 case ButtonType.Info:
@@ -39,7 +41,7 @@ namespace Mvc.Html.Bootstrap
                 case ButtonType.Link:
                     return "btn-link";
                 default:
-                    return "btn";
+                    return string.Empty;
             }
         }
 
@@ -119,32 +121,38 @@ namespace Mvc.Html.Bootstrap
                 builder.AddCssClass("disabled");
                 builder.MergeAttribute("disabled", "disabled");
             }
-            if (block.HasValue && block.Value) builder.AddCssClass("btn-block");
-            if (size.HasValue) builder.AddCssClass(size.Value.ToCssClass());
-            if (type.HasValue) builder.AddCssClass(type.Value.ToCssClass());
+            if (block.HasValue && block.Value) 
+                builder.AddCssClass("btn-block");
+            if (size.HasValue && size.Value != ButtonSize.Defualt) 
+                builder.AddCssClass(size.Value.ToCssClass());
+            if (type.HasValue && type.Value != ButtonType.Defualt) 
+                builder.AddCssClass(type.Value.ToCssClass());
             builder.AddCssClass(ButtonType.Defualt.ToCssClass());
 
             // Adding html tag type
+            var renderMode = TagRenderMode.Normal;
             if (tag.HasValue)
             {
                 switch (tag)
                 {
                     case ButtonTag.Anchor:
                         builder.MergeAttribute("href", "#");
+                        builder.SetInnerText(text);
                         break;
                     case ButtonTag.InputSubmit:
                         builder.MergeAttribute("type", "submit");
+                        builder.MergeAttribute("value", text);
+                        renderMode = TagRenderMode.SelfClosing;
                         break;
                     default:
                         builder.MergeAttribute("type", "button");
+                        builder.SetInnerText(text);
                         break;
                 }
             }
 
             builder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
-
-            builder.SetInnerText(text);
-            return new MvcHtmlString(builder.ToString());
+            return new MvcHtmlString(builder.ToString(renderMode));
         }
 
         public static MvcHtmlString SubmitButton(this HtmlHelper html, string text)
