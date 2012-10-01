@@ -10,3 +10,4 @@ _ReSharper.Mvc.Html.Bootstrap
 
 # Visual Studio
 *.suo
+*.sln.DotSettings.user
