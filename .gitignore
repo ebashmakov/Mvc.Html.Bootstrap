@@ -7,8 +7,11 @@ TestResults
 
 # Resharper
 _ReSharper.Mvc.Html.Bootstrap
+Mvc.Html.Bootstrap.NuGet
 
 # Visual Studio
 *.suo
 *.sln.DotSettings.user
+
+# NuGet
 *.nupkg
