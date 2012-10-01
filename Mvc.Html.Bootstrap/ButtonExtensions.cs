@@ -146,5 +146,15 @@ namespace Mvc.Html.Bootstrap
             builder.SetInnerText(text);
             return new MvcHtmlString(builder.ToString());
         }
+
+        public static MvcHtmlString SubmitButton(this HtmlHelper html, string text)
+        {
+            return SubmitButton(html, text, ButtonType.Primary, ButtonSize.Defualt);
+        }
+
+        public static MvcHtmlString SubmitButton(this HtmlHelper html, string text, ButtonType? type, ButtonSize? size)
+        {
+            return Button(html, text, type, size, ButtonTag.InputSubmit);
+        }
     }
 }

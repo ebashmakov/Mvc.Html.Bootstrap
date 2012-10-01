@@ -10,7 +10,7 @@ namespace Mvc.Html.Bootstrap
 
     public static class ButtonGroup
     {
-        private static class Css
+        public static class Css
         {
             public static readonly string Group;
             public static readonly string VerticalGroup;

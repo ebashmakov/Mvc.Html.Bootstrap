@@ -4,7 +4,7 @@ namespace Mvc.Html.Bootstrap
 {
     public static class DropdownExtensions
     {
-        private static class Css
+        public static class Css
         {
             public static readonly string Dropdown;
             public static readonly string DropdownMenu;
