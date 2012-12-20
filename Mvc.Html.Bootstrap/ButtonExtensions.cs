@@ -5,17 +5,17 @@ namespace Mvc.Html.Bootstrap
 {
     public enum ButtonType
     {
-        Defualt, Primary, Info, Success, Warning, Danger, Inverse, Link
+        Default, Primary, Info, Success, Warning, Danger, Inverse, Link
     }
 
     public enum ButtonSize
     {
-        Defualt, Large, Small, Mini
+        Default, Large, Small, Mini
     }
 
     public enum ButtonTag
     {
-        Defualt, Anchor, Input, InputSubmit
+        Default, Anchor, Input, InputSubmit
     }
 
     public static class ButtonExtensions
@@ -24,7 +24,7 @@ namespace Mvc.Html.Bootstrap
         {
             switch (type)
             {
-                case ButtonType.Defualt:
+                case ButtonType.Default:
                     return "btn";
                 case ButtonType.Primary:
                     return "btn-primary";
@@ -77,22 +77,22 @@ namespace Mvc.Html.Bootstrap
 
         public static MvcHtmlString Button(this HtmlHelper html, string text)
         {
-            return Button(html, text, ButtonType.Defualt);
+            return Button(html, text, ButtonType.Default);
         }
 
         public static MvcHtmlString Button(this HtmlHelper html, string text, ButtonType type)
         {
-            return Button(html, text, type, ButtonSize.Defualt);
+            return Button(html, text, type, ButtonSize.Default);
         }
 
         public static MvcHtmlString Button(this HtmlHelper html, string text, ButtonTag tag, object htmlAttributes)
         {
-            return Button(html, text, ButtonType.Defualt, ButtonSize.Defualt, tag, false, false, htmlAttributes);
+            return Button(html, text, ButtonType.Default, ButtonSize.Default, tag, false, false, htmlAttributes);
         }
 
         public static MvcHtmlString Button(this HtmlHelper html, string text, ButtonType type, ButtonSize size)
         {
-            return Button(html, text, type, size, ButtonTag.Defualt);
+            return Button(html, text, type, size, ButtonTag.Default);
         }
 
         public static MvcHtmlString Button(this HtmlHelper html, string text, ButtonType? type, ButtonSize? size, ButtonTag? tag)
@@ -112,7 +112,7 @@ namespace Mvc.Html.Bootstrap
 
         public static MvcHtmlString Button(this HtmlHelper html, string text, ButtonType? type, ButtonSize? size, ButtonTag? tag, bool? block, bool? disabled, object htmlAttributes)
         {
-            var tagName = (tag.HasValue ? tag.Value : ButtonTag.Defualt).ToHtmlTag();
+            var tagName = (tag.HasValue ? tag.Value : ButtonTag.Default).ToHtmlTag();
             var builder = new TagBuilder(tagName);
 
             // Adding css styles
@@ -123,11 +123,11 @@ namespace Mvc.Html.Bootstrap
             }
             if (block.HasValue && block.Value) 
                 builder.AddCssClass("btn-block");
-            if (size.HasValue && size.Value != ButtonSize.Defualt) 
+            if (size.HasValue && size.Value != ButtonSize.Default) 
                 builder.AddCssClass(size.Value.ToCssClass());
-            if (type.HasValue && type.Value != ButtonType.Defualt) 
+            if (type.HasValue && type.Value != ButtonType.Default) 
                 builder.AddCssClass(type.Value.ToCssClass());
-            builder.AddCssClass(ButtonType.Defualt.ToCssClass());
+            builder.AddCssClass(ButtonType.Default.ToCssClass());
 
             // Adding html tag type
             var renderMode = TagRenderMode.Normal;
@@ -150,14 +150,14 @@ namespace Mvc.Html.Bootstrap
                         break;
                 }
             }
-
-            builder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
+           
+            builder.MergeAttributes(new RouteValueDictionary(htmlAttributes), true);
             return new MvcHtmlString(builder.ToString(renderMode));
         }
 
         public static MvcHtmlString SubmitButton(this HtmlHelper html, string text)
         {
-            return SubmitButton(html, text, ButtonType.Primary, ButtonSize.Defualt);
+            return SubmitButton(html, text, ButtonType.Primary, ButtonSize.Default);
         }
 
         public static MvcHtmlString SubmitButton(this HtmlHelper html, string text, ButtonType? type, ButtonSize? size)

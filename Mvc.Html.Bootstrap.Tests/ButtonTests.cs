@@ -23,7 +23,7 @@ namespace Mvc.Html.Bootstrap.Tests
             get
             {
                 yield return
-                    new TestCaseData("Action", ButtonType.Defualt, ButtonSize.Defualt, ButtonTag.Defualt, false, false)
+                    new TestCaseData("Action", ButtonType.Default, ButtonSize.Default, ButtonTag.Default, false, false)
                         .Returns("<button class=\"btn\" type=\"button\">Action</button>");
             }
         }
