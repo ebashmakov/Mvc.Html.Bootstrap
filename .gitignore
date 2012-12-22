@@ -1,6 +1,31 @@
-# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
-bin
-obj
+#Visual Studio files
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+ipch/
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
 
 # mstest test results
 TestResults
@@ -15,3 +40,9 @@ Mvc.Html.Bootstrap.NuGet
 
 # NuGet
 *.nupkg
+
+*.bak
+
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
