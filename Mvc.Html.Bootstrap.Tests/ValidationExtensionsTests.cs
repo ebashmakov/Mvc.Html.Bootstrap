@@ -13,7 +13,7 @@ namespace Mvc.Html.Bootstrap.Tests
         public void BootstrapValidationSummary()
         {
             // Arrange
-            var helper = HtmlHelperTestFactory.CreateHtmlHelper<string>(GetViewDataWithModelErrors());
+            var helper = MvcTestHelper.GetHtmlHelper(GetViewDataWithModelErrors());
 
             // Act
             var html = helper.BootstrapValidationSummary("Please fix the following errors.");

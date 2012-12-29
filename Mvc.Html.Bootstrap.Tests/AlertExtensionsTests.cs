@@ -13,7 +13,7 @@ namespace Mvc.Html.Bootstrap.Tests
         public void DismissButtonDefault()
         {
             // Arrange
-            var helper = HtmlHelperTestFactory.CreateHtmlHelper<string>(new ViewDataDictionary(""));
+            var helper = MvcTestHelper.GetHtmlHelper();
 
             // Act
             var html = helper.DismissButton(ButtonTag.Default).ToHtmlString();
@@ -28,7 +28,7 @@ namespace Mvc.Html.Bootstrap.Tests
         public void DismissButtonAnchor()
         {
             // Arrange
-            var helper = HtmlHelperTestFactory.CreateHtmlHelper<string>(new ViewDataDictionary(""));
+            var helper = MvcTestHelper.GetHtmlHelper();
 
             // Act
             var html = helper.DismissButton(ButtonTag.Anchor).ToHtmlString();
@@ -43,7 +43,7 @@ namespace Mvc.Html.Bootstrap.Tests
         public void DismissButtonInput()
         {
             // Arrange
-            var helper = HtmlHelperTestFactory.CreateHtmlHelper<string>(new ViewDataDictionary(""));
+            var helper = MvcTestHelper.GetHtmlHelper();
 
             // Act
             var html = helper.DismissButton(ButtonTag.Input).ToHtmlString();
@@ -58,7 +58,7 @@ namespace Mvc.Html.Bootstrap.Tests
         public void DismissButtonInputSubmit()
         {
             // Arrange
-            var helper = HtmlHelperTestFactory.CreateHtmlHelper<string>(new ViewDataDictionary(""));
+            var helper = MvcTestHelper.GetHtmlHelper();
 
             // Act
             var html = helper.DismissButton(ButtonTag.InputSubmit).ToHtmlString();
@@ -73,7 +73,7 @@ namespace Mvc.Html.Bootstrap.Tests
         public void DismissButtonCustomText()
         {
             // Arrange
-            var helper = HtmlHelperTestFactory.CreateHtmlHelper<string>(new ViewDataDictionary(""));
+            var helper = MvcTestHelper.GetHtmlHelper();
 
             // Act
             var html = helper.DismissButton(ButtonTag.Default, "<Foo>").ToHtmlString();

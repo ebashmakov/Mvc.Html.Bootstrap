@@ -82,7 +82,8 @@
   <ItemGroup>
     <Compile Include="AlertExtensionsTests.cs" />
     <Compile Include="ButtonTests.cs" />
-    <Compile Include="HtmlHelperTestFactory.cs" />
+    <Compile Include="FormExtensionsTests.cs" />
+    <Compile Include="MvcTestHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationExtensionsTests.cs" />
   </ItemGroup>

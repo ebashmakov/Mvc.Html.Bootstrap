@@ -27,7 +27,21 @@ namespace Mvc.Html.Bootstrap
 
         public static MvcContainer BeginControlGroup(this HtmlHelper html)
         {
-            return html.ContainerHelper(new { @class = "control-group" });
+            return BeginControlGroup(html, null);
+        }
+
+        public static MvcContainer BeginControlGroup(this HtmlHelper html, object htmlAttributes)
+        {
+            var tagName = "div";
+            var tagBuilder = new TagBuilder(tagName);
+            if (htmlAttributes != null)
+            {
+                tagBuilder.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+            }
+            tagBuilder.AddCssClass("control-group");
+            html.ViewContext.Writer.Write(tagBuilder.ToString(TagRenderMode.StartTag));
+
+            return new MvcContainer(html.ViewContext, tagName);
         }
 
         public static MvcForm BeginForm(this HtmlHelper html, FormType type)
