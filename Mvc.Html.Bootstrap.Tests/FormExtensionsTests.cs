@@ -1,12 +1,10 @@
-﻿using System;
-using System.Web.Mvc;
-using System.Xml;
-using Mvc.Html.Bootstrap;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using System.Web.Routing;
-
+//using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mvc.Html.Bootstrap.Tests
 {
@@ -19,7 +17,7 @@ namespace Mvc.Html.Bootstrap.Tests
             var viewData = new ViewDataDictionary();
             StringWriter writer;
             //var htmlHelper = HtmlHelperTestFactory.CreateHtmlHelper<string>(viewData, out writer);
-            var htmlHelper = MvcTestHelper.GetHtmlHelper(viewData, out writer);
+            var htmlHelper = MvcTestHelper.GetHtmlHelper<object>(viewData, out writer);
 
             // Act
             IDisposable containerDisposable = beginContainer(htmlHelper);
@@ -79,5 +77,41 @@ namespace Mvc.Html.Bootstrap.Tests
         {
             BeginMvcFormHelper(html => html.BeginForm(FormType.Default), @"<form action=""" + MvcTestHelper.AppPathModifier + @"/home/index"" class="""" method=""post"">");
         }
+
+        [Test]
+        public void ControlGroupFor()
+        {
+            var htmlHelper = MvcTestHelper.GetHtmlHelper<LoginModel>(GetControlGroupForViewData());
+            var html = htmlHelper.ControlGroupFor(m => m.UserName);
+
+            var expected = "<div class=\"control-group\">" + Environment.NewLine
+                + "<label class=\"control-label\" for=\"UserName\">User name</label>" + Environment.NewLine
+                + "<div class=\"controls\">" + Environment.NewLine
+                + "<input data-val=\"true\" data-val-required=\"The User name field is required.\" id=\"UserName\" name=\"UserName\" placeholder=\"User name\" type=\"text\" value=\"\" />" + Environment.NewLine
+                + "<span class=\"field-validation-valid\" data-valmsg-for=\"UserName\" data-valmsg-replace=\"true\"></span>" + Environment.NewLine
+                + "</div>" + Environment.NewLine
+                + "</div>" + Environment.NewLine;
+        }
+
+        private static ViewDataDictionary<LoginModel> GetControlGroupForViewData()
+        {
+            var viewData = new ViewDataDictionary<LoginModel>();
+            return viewData;
+        }
+    }
+
+    public class LoginModel
+    {
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
     }
 }

@@ -7,28 +7,15 @@
 
 <div class="span6">
     <h2>Use a local account to log in.</h2>
-    @*
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
-@using (Html.BeginForm("Login","Account",FormMethod.Post,new {@class="form-horizontal"})) {    
-    *@
+
 @using (Html.BeginForm(FormType.Horizontal)) {    
     @Html.AntiForgeryToken()
     @Html.BootstrapValidationSummary("Please fix the following errors.");
     <legend>Log in Form</legend>
-    using (Html.BeginControlGroup()) {
-        @Html.LabelFor(m => m.UserName, new {@class = "control-label" })
-        <div class="controls">
-        @Html.TextBoxFor(m => m.UserName, new { placeholder = "Email" })
-        @Html.ValidationMessageFor(m => m.UserName)
-        </div>  
-    }
-    using (Html.BeginControlGroup()) {
-        @Html.LabelFor(m => m.Password, new {@class = "control-label" })
-        <div class="controls">
-        @Html.TextBoxFor(m => m.Password, new { placeholder = "Password" })
-        @Html.ValidationMessageFor(m => m.Password)
-        </div>
-    }   
+    
+    @Html.ControlGroupFor(m => m.UserName)
+    @Html.ControlGroupFor(m => m.Password)
+     
     using (Html.BeginControlGroup(new {@class = "highlight-none"})) { 
         <div class="controls">
             <label class="checkbox">  Remember me

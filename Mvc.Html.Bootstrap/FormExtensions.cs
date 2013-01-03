@@ -1,5 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using System.Linq;
+
 
 namespace Mvc.Html.Bootstrap
 {
@@ -49,6 +54,37 @@ namespace Mvc.Html.Bootstrap
             var actionName = (string)html.ViewContext.RouteData.Values["action"];
             var controllerName = (string)html.ViewContext.RouteData.Values["controller"];
             return html.BeginForm(actionName, controllerName, FormMethod.Post, new { @class = type.ToCssClass() });
+        }
+
+        public static MvcHtmlString ControlGroupFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression, string labelText = null, IDictionary<string, object> htmlAttributes = null)
+        {
+            if (expression == null)
+            {
+                throw new ArgumentNullException("expression");
+            }
+
+            var htmlFieldName = ExpressionHelper.GetExpressionText(expression);
+            var metadata = ModelMetadata.FromLambdaExpression(expression, htmlHelper.ViewData);
+            string resolvedLabelText = labelText ?? metadata.DisplayName ?? metadata.PropertyName ?? htmlFieldName.Split('.').Last();
+            if (String.IsNullOrEmpty(resolvedLabelText))
+            {
+                return MvcHtmlString.Empty;
+            }
+
+            var controls = new TagBuilder("div");
+            controls.AddCssClass("controls");
+            controls.InnerHtml += Environment.NewLine;
+            controls.InnerHtml += htmlHelper.TextBoxFor(expression, new { placeholder = resolvedLabelText }) + Environment.NewLine;
+            controls.InnerHtml += htmlHelper.ValidationMessageFor(expression) + Environment.NewLine;
+
+            var controlGroup = new TagBuilder("div");
+            controlGroup.MergeAttributes(htmlAttributes, replaceExisting: true);
+            controlGroup.AddCssClass("control-group");
+            controlGroup.InnerHtml += Environment.NewLine;
+            controlGroup.InnerHtml += htmlHelper.LabelFor(expression, resolvedLabelText, new { @class = "control-label" }) + Environment.NewLine;
+            controlGroup.InnerHtml += controls + Environment.NewLine;
+            
+            return new MvcHtmlString(controlGroup.ToString(TagRenderMode.Normal));
         }
     }
 }
