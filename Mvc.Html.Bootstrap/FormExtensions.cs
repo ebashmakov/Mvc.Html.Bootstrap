@@ -71,17 +71,22 @@ namespace Mvc.Html.Bootstrap
                 return MvcHtmlString.Empty;
             }
 
+            var isCheckbox = (metadata.ModelType == typeof(bool) || metadata.ModelType == typeof(bool?));
+
             var controls = new TagBuilder("div");
             controls.AddCssClass("controls");
             controls.InnerHtml += Environment.NewLine;
-            controls.InnerHtml += htmlHelper.TextBoxFor(expression, new { placeholder = resolvedLabelText }) + Environment.NewLine;
+            controls.InnerHtml += htmlHelper.EditorFor(expression, new { placeholder = resolvedLabelText }) + Environment.NewLine;
+            if (isCheckbox)
+                controls.InnerHtml += resolvedLabelText + Environment.NewLine;
             controls.InnerHtml += htmlHelper.ValidationMessageFor(expression) + Environment.NewLine;
 
             var controlGroup = new TagBuilder("div");
             controlGroup.MergeAttributes(htmlAttributes, replaceExisting: true);
             controlGroup.AddCssClass("control-group");
             controlGroup.InnerHtml += Environment.NewLine;
-            controlGroup.InnerHtml += htmlHelper.LabelFor(expression, resolvedLabelText, new { @class = "control-label" }) + Environment.NewLine;
+            if (!isCheckbox)
+                controlGroup.InnerHtml += htmlHelper.LabelFor(expression, resolvedLabelText, new { @class = "control-label" }) + Environment.NewLine;
             controlGroup.InnerHtml += controls + Environment.NewLine;
             
             return new MvcHtmlString(controlGroup.ToString(TagRenderMode.Normal));

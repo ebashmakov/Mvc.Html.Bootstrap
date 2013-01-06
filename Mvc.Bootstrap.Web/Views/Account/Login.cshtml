@@ -15,73 +15,21 @@
     
     @Html.ControlGroupFor(m => m.UserName)
     @Html.ControlGroupFor(m => m.Password)
+    @Html.ControlGroupFor(m => m.RememberMe)
      
-    using (Html.BeginControlGroup(new {@class = "highlight-none"})) { 
-        <div class="controls">
-            <label class="checkbox">  Remember me
-                @Html.CheckBoxFor(m => m.RememberMe)
-            </label>
-        </div>
-    }   
     <div class="form-actions">
         <input class="btn" type="submit" value="Log in" />
     </div>
     <p>@Html.ActionLink("Register", "Register") if you don't have an account.</p>
 }
-</div><!--/span-->
+</div>
 
 <div class="span6" id="socialLoginForm">
     <h2>Use another service to log in.</h2>
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</div><!--/span-->
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript">
-
-        (function () {
-            var highlight = $.validator.defaults.highlight;
-            var unhighlight = $.validator.defaults.unhighlight;
-
-            $.validator.setDefaults({
-                highlight: function (element, errorClass, validClass) {
-                    $(element).parents('.control-group').each(function () {
-                        var $this = $(this);
-                        if (!$this.hasClass('highlight-none')) {
-                            $this.removeClass('success')
-                                 .addClass('error');
-                        }
-                    });
-                    highlight(element, errorClass, validClass);
-                },
-                unhighlight: function (element, errorClass, validClass) {
-                    $(element).parents('.control-group').each(function () {
-                        var $this = $(this);
-                        if (!$this.hasClass('highlight-none')) {
-                            $this.removeClass('error')
-                                 .addClass('success');
-                        }
-                    });
-                    unhighlight(element, errorClass, validClass);
-                }
-            });
-        })();
-
-        $(document).ready(function () {
-
-            $('span.field-validation-valid, span.field-validation-error').each(function () {
-                $(this).addClass('help-inline');
-            });
-
-            $('form').each(function () {
-                $(this).find('div.control-group').each(function () {
-                    if ($(this).find('span.field-validation-error').length > 0) {
-                        $(this).addClass('error');
-                    }
-                });
-            });
-
-        });
-
-    </script>
+    <script src="/Scripts/mvc.bootstrap.js"></script>
 }
