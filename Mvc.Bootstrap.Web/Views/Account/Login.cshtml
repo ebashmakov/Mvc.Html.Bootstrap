@@ -4,29 +4,35 @@
 @{
     ViewBag.Title = "Log in";
 }
-
-<div class="span6">
-    <h2>Use a local account to log in.</h2>
-
-@using (Html.BeginForm(FormType.Horizontal)) {    
-    @Html.AntiForgeryToken()
-    @Html.BootstrapValidationSummary("Please fix the following errors.");
-    <legend>Log in Form</legend>
-    
-    @Html.ControlGroupFor(m => m.UserName)
-    @Html.ControlGroupFor(m => m.Password)
-    @Html.ControlGroupFor(m => m.RememberMe)
-     
-    <div class="form-actions">
-        <input class="btn" type="submit" value="Log in" />
+<div class="row-fluid">
+    <div class="span12">
+        <h1>@ViewBag.Title.</h1>
     </div>
-    <p>@Html.ActionLink("Register", "Register") if you don't have an account.</p>
-}
 </div>
+<div class="row-fluid">
+    <div class="span6">
+        <h2>Use a local account to log in.</h2>
 
-<div class="span6" id="socialLoginForm">
-    <h2>Use another service to log in.</h2>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+    @using (Html.BeginForm(FormType.Horizontal)) {    
+        @Html.AntiForgeryToken()
+        @Html.BootstrapValidationSummary("Please fix the following errors.");
+        <legend>Log in Form</legend>
+    
+        @Html.ControlGroupFor(m => m.UserName)
+        @Html.ControlGroupFor(m => m.Password)
+        @Html.ControlGroupFor(m => m.RememberMe)
+     
+        <div class="form-actions">
+            @Html.Button("Log in", ButtonType.Primary, ButtonSize.Default, ButtonTag.InputSubmit)
+        </div>
+        <p>@Html.ActionLink("Register", "Register") if you don't have an account.</p>
+    }
+    </div>
+
+    <div class="span6" id="socialLoginForm">
+        <h2>Use another service to log in.</h2>
+        @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+    </div>
 </div>
 
 @section Scripts {

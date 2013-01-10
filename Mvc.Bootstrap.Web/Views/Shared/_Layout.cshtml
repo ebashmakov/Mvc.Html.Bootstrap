@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - Cuckoo</title>
+        <title>@ViewBag.Title</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/bootstrap/css")
@@ -30,30 +30,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </a>
-                    @Html.ActionLink("Cuckoo", "Index", "Home", new { @class = "brand" })
+                    @Html.ActionLink("Mvc.Bootstrap", "Index", "Home", new { @class = "brand" })
                     <div class="nav-collapse collapse">
                 
                         @Html.Partial("_LoginPartial")
-
+                        @Html.MvcSiteMap().Menu()
+                        @*
                         <ul class="nav">
                             <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>
+                        *@
                     </div><!--/nav-collapse -->
                 </div>
             </div>
         </div>
         
         <div class="container-fluid">
-            <div class="row-fluid">
-                @RenderSection("featured", required: false)
-            </div>
-            <div class="row-fluid">
-                @RenderBody()
-            </div>
+            
+            @RenderSection("featured", required: false)
+
+            @RenderBody()
+
             <footer>
-                <p>&copy; Cuckoo  @DateTime.Now.Year</p>
+                <p>&copy; @DateTime.Now.Year</p>
             </footer>
         </div><!--/fluid-container-->
 

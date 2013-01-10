@@ -1,37 +1,32 @@
-﻿@model Mvc.Bootstrap.Web.Models.RegisterModel
+﻿@using Mvc.Html.Bootstrap
+@model Mvc.Bootstrap.Web.Models.RegisterModel
 @{
     ViewBag.Title = "Register";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
-</hgroup>
-
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
-
-    <fieldset>
-        <legend>Registration Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-        </ol>
-        <input type="submit" value="Register" />
-    </fieldset>
-}
+<div class="row-fluid">
+    <div class="span12">
+        <h1>@ViewBag.Title.</h1>
+        <h2>Create a new account.</h2>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span12">
+        @using (Html.BeginForm(FormType.Horizontal)) {   
+            @Html.AntiForgeryToken()
+            @Html.BootstrapValidationSummary("Please fix the following errors.");
+            <legend>Registration Form</legend>
+            @Html.ControlGroupFor(m => m.UserName)
+            @Html.ControlGroupFor(m => m.Password)
+            @Html.ControlGroupFor(m => m.ConfirmPassword)
+            <div class="form-actions">
+                @Html.Button("Register", ButtonType.Primary, ButtonSize.Default, ButtonTag.InputSubmit)
+            </div>    
+        }
+    </div>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="/Scripts/mvc.bootstrap.js"></script>
 }
