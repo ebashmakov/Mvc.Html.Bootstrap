@@ -2,10 +2,23 @@
 @using System.Web.Mvc.Html
 @using MvcSiteMapProvider.Web.Html.Models
 
-@if (Model.IsCurrentNode && Model.SourceMetadata["HtmlHelper"].ToString() != "MvcSiteMapProvider.Web.Html.MenuHelper")  { 
-    <text>@Model.Title</text>
-} else if (Model.IsClickable) { 
+@if (Model.Children.Any())
+{
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Model.Title<b class="caret"></b></a>
+}
+else {
+
+
+if (Model.IsCurrentNode && Model.SourceMetadata["HtmlHelper"].ToString() != "MvcSiteMapProvider.Web.Html.MenuHelper")
+{
+    <text>@Model.Title</text> }
+else if (Model.IsClickable)
+{
     <a href="@Model.Url">@Model.Title</a>
-} else { 
+}
+else
+{
     <text>@Model.Title</text>
+}
+    
 }

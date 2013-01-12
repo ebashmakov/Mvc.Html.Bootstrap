@@ -2,7 +2,7 @@
 @using System.Web.Mvc.Html
 @using MvcSiteMapProvider.Web.Html.Models
 
-<ul>
+<ul class="dropdown-menu">
     @foreach (var node in Model) { 
         <li>@Html.DisplayFor(m => node) 
             @if (node.Children.Any()) {
