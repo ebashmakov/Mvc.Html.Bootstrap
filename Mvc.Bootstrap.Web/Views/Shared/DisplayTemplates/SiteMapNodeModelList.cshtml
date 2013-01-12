@@ -1,10 +1,12 @@
 ﻿@model MvcSiteMapProvider.Web.Html.Models.SiteMapNodeModelList
 @using System.Web.Mvc.Html
 @using MvcSiteMapProvider.Web.Html.Models
+@using Mvc.Html.Bootstrap
 
 <ul class="dropdown-menu">
-    @foreach (var node in Model) { 
-        <li>@Html.DisplayFor(m => node) 
+    @foreach (var node in Model) {
+        var cssclass = Html.GetBootstrappCssClass(node).ToString();   
+        <li @Html.Raw(string.IsNullOrEmpty(cssclass) ? string.Empty : "class=\"" + cssclass + "\"")>@Html.DisplayFor(m => node) 
             @if (node.Children.Any()) {
                 @Html.DisplayFor(m => node.Children)
             }

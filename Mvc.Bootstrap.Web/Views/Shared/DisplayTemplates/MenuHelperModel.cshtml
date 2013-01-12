@@ -1,11 +1,12 @@
 ﻿@model MvcSiteMapProvider.Web.Html.Models.MenuHelperModel
 @using System.Web.Mvc.Html
 @using MvcSiteMapProvider.Web.Html.Models
-@using Mvc.Html.Bootstrap;
+@using Mvc.Html.Bootstrap
 
 <ul class="nav">
-    @foreach (var node in Model.Nodes) {        
-        <li @Html.GetBootstrappCssClass(node)>@Html.DisplayFor(m => node) 
+    @foreach (var node in Model.Nodes) {
+        var cssclass = Html.GetBootstrappCssClass(node).ToString();   
+        <li @Html.Raw(string.IsNullOrEmpty(cssclass) ? string.Empty : "class=\"" + cssclass + "\"")>@Html.DisplayFor(m => node) 
             @if (node.Children.Any()) {
                 @Html.DisplayFor(m => node.Children)
             }

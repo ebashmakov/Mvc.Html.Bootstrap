@@ -42,6 +42,9 @@
     <Reference Include="MvcContrib.TestHelper">
       <HintPath>..\packages\MvcContrib.Mvc3.TestHelper-ci.3.0.100.0\lib\MvcContrib.TestHelper.dll</HintPath>
     </Reference>
+    <Reference Include="MvcSiteMapProvider">
+      <HintPath>..\packages\MvcSiteMapProvider.3.3.4.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
     <Reference Include="nunit-console-runner">
       <HintPath>..\packages\NUnit.Runners.lite.2.6.1.20120813\lib\nunit-console-runner.dll</HintPath>
     </Reference>
@@ -85,6 +88,7 @@
     <Compile Include="AlertExtensionsTests.cs" />
     <Compile Include="ButtonTests.cs" />
     <Compile Include="FormExtensionsTests.cs" />
+    <Compile Include="MenuExtensionsTests.cs" />
     <Compile Include="MvcTestHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationExtensionsTests.cs" />
