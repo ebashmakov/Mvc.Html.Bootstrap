@@ -9,8 +9,7 @@
         <li @Html.Raw(string.IsNullOrEmpty(cssclass) ? string.Empty : "class=\"" + cssclass + "\"")>@Html.DisplayFor(m => node) 
             @if (node.Children.Any()) {
                 @Html.DisplayFor(m => node.Children)
-            }
-            @Html.Partial("Bootstrap/MenuDropDown", node)
+            } 
         </li>
     }
 </ul>

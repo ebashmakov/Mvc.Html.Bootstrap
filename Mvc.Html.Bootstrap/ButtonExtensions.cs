@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Mvc.Html.Bootstrap
@@ -150,8 +151,12 @@ namespace Mvc.Html.Bootstrap
                         break;
                 }
             }
-           
-            builder.MergeAttributes(new RouteValueDictionary(htmlAttributes), true);
+            IDictionary<string, object> attributes;
+            if (htmlAttributes is IDictionary<string, object>)
+                attributes = (IDictionary<string, object>)htmlAttributes;
+            else
+                attributes = new RouteValueDictionary(htmlAttributes);
+            builder.MergeAttributes(attributes, true);
             return new MvcHtmlString(builder.ToString(renderMode));
         }
 

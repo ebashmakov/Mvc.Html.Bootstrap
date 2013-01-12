@@ -171,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BootstrapController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -303,10 +304,12 @@
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
-    <Content Include="Views\Shared\Bootstrap\MenuDropdown.cshtml" />
+    <Content Include="Views\Bootstrap\Index.cshtml" />
+    <Content Include="Views\Bootstrap\BaseCss.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Shared\Bootstrap\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -20,7 +20,7 @@ namespace Mvc.Html.Bootstrap.Tests
 
             // Assert
             Assert.AreEqual(
-                "<button class=\"close\" data_dismiss=\"alert\" type=\"button\">&#215;</button>",
+                "<button class=\"close\" data-dismiss=\"alert\" type=\"button\">&#215;</button>",
                 html);
         }
 
@@ -35,7 +35,7 @@ namespace Mvc.Html.Bootstrap.Tests
 
             // Assert
             Assert.AreEqual(
-                "<a class=\"close\" data_dismiss=\"alert\" href=\"#\">&#215;</a>",
+                "<a class=\"close\" data-dismiss=\"alert\" href=\"#\">&#215;</a>",
                 html);
         }
 
@@ -50,7 +50,7 @@ namespace Mvc.Html.Bootstrap.Tests
 
             // Assert
             Assert.AreEqual(
-                "<input class=\"close\" data_dismiss=\"alert\" type=\"button\">&#215;</input>",
+                "<input class=\"close\" data-dismiss=\"alert\" type=\"button\">&#215;</input>",
                 html);
         }
 
@@ -65,7 +65,7 @@ namespace Mvc.Html.Bootstrap.Tests
 
             // Assert
             Assert.AreEqual(
-                "<input class=\"close\" data_dismiss=\"alert\" type=\"submit\" value=\"×\" />",
+                "<input class=\"close\" data-dismiss=\"alert\" type=\"submit\" value=\"×\" />",
                 html);
         }
 
@@ -80,7 +80,7 @@ namespace Mvc.Html.Bootstrap.Tests
 
             // Assert
             Assert.AreEqual(
-                "<button class=\"close\" data_dismiss=\"alert\" type=\"button\">&lt;Foo&gt;</button>",
+                "<button class=\"close\" data-dismiss=\"alert\" type=\"button\">&lt;Foo&gt;</button>",
                 html);
         }
     }

@@ -20,7 +20,7 @@ namespace Mvc.Html.Bootstrap.Tests
 
             // Assert
             Assert.AreEqual("<div class=\"validation-summary-errors alert alert-block alert-error\">"
-                + "<button class=\"close\" data_dismiss=\"alert\" type=\"button\">×</button>"
+                + "<button class=\"close\" data-dismiss=\"alert\" type=\"button\">×</button>"
                 + "<h4>Please fix the following errors.</h4>"
                 + "<ul><li>foo error &lt;1&gt;</li>"
                 + "<li>foo error 2</li>"

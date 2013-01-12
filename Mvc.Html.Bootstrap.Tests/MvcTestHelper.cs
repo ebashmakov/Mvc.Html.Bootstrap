@@ -47,6 +47,7 @@ namespace Mvc.Html.Bootstrap.Tests
             mockViewContext.Setup(c => c.HttpContext).Returns(httpcontext);
             mockViewContext.Setup(c => c.ViewData).Returns(viewData);
             mockViewContext.Setup(c => c.RouteData).Returns(rd);
+            mockViewContext.Setup(c => c.TempData).Returns(new TempDataDictionary());
             mockViewContext.Setup(c => c.Writer).Returns(writer);
 
             var htmlHelper = new HtmlHelper<T>(mockViewContext.Object, GetViewDataContainer(viewData), rt);
@@ -83,7 +84,7 @@ namespace Mvc.Html.Bootstrap.Tests
             writer = new StringWriter();
             mockViewContext.Setup(c => c.Writer).Returns(writer);
             mockViewContext.Setup(c => c.HttpContext.Response.ApplyAppPathModifier(It.IsAny<string>())).Returns<string>(r => AppPathModifier + r);
-
+            mockViewContext.Setup(c => c.TempData).Returns(new TempDataDictionary());
             RouteCollection rt = GetRouteCollection();
             RouteData rd = GetRouteData();
 
