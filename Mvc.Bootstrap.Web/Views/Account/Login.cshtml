@@ -16,15 +16,15 @@
     @using (Html.BeginForm(FormType.Horizontal)) {    
         @Html.AntiForgeryToken()
         @Html.BootstrapValidationSummary("Please fix the following errors.");
-        <legend>Log in Form</legend>
-    
-        @Html.ControlGroupFor(m => m.UserName)
-        @Html.ControlGroupFor(m => m.Password)
-        @Html.ControlGroupFor(m => m.RememberMe)
-     
-        <div class="form-actions">
-            @Html.Button("Log in", ButtonType.Primary, ButtonSize.Default, ButtonTag.InputSubmit)
-        </div>
+        <fieldset>
+            <legend>Log in Form</legend>
+            @Html.ControlGroupFor(m => m.UserName)
+            @Html.ControlGroupFor(m => m.Password)
+            @Html.ControlGroupFor(m => m.RememberMe)
+            <div class="form-actions">
+                @Html.Button("Log in", ButtonType.Primary, ButtonSize.Default, ButtonTag.InputSubmit)
+            </div>
+        </fieldset>
         <p>@Html.ActionLink("Register", "Register") if you don't have an account.</p>
     }
     </div>
@@ -37,5 +37,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="/Scripts/mvc.bootstrap.js"></script>
+    <script src="/Scripts/mvc.html.bootstrap.js"></script>
 }

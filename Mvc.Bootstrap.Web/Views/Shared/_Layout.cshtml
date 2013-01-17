@@ -6,17 +6,7 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/bootstrap/css")
-        <style type="text/css">
-          body { padding-top: 60px; padding-bottom: 40px; }
-        .validation-summary-errors.alert.alert-block.alert-error ul li
-        {
-            list-style: none;
-        }
-        .validation-summary-errors.alert.alert-block.alert-error ul
-        {
-            margin: 0; padding: 0;
-        }
-        </style>
+        @Styles.Render("~/Content/css")
         @Styles.Render("~/Content/bootstrap-responsive/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
@@ -29,17 +19,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </a>
-                    @Html.ActionLink("Mvc.Bootstrap", "Index", "Home", new { @class = "brand" })
+                    @Html.ActionLink("Mvc.Html.Bootstrap", "Index", new {controller = "Home"}, new { @class = "brand" })
                     <div class="nav-collapse collapse">
-                        @Html.Partial("_LoginPartial")
                         @Html.MvcSiteMap().Menu()
+                        @Html.Partial("_LoginPartial")
                     </div><!--/nav-collapse -->
                 </div>
             </div>
         </div>
         
         <div class="container-fluid">
-            
             @RenderSection("featured", required: false)
 
             @RenderBody()
