@@ -317,6 +317,8 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Bootstrap\Index.cshtml" />
     <Content Include="Views\Bootstrap\BaseCss.cshtml" />
+    <Content Include="Views\Account\ManageBootstrap.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartialBootstrap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

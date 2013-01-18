@@ -54,6 +54,9 @@ namespace Mvc.Html.Bootstrap
 
         public static MvcHtmlString Alert(this HtmlHelper helper, AlertType type, string text, string header, ButtonTag? closeButton, bool block)
         {
+            if (string.IsNullOrEmpty(text))
+                return new MvcHtmlString(string.Empty);
+
             var builder = new TagBuilder("div");
 
             if (block) builder.AddCssClass("alert-block");
