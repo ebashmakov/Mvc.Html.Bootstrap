@@ -5,10 +5,13 @@
             enableLocalization="true">
 
   <mvcSiteMapNode title="Home" controller="Home" action="Index">
+    <mvcSiteMapNode title="Documentation">
+      <mvcSiteMapNode title="Forms" controller="Documentation" action="Forms"/>
+    </mvcSiteMapNode>
     <mvcSiteMapNode title="Help">
       <mvcSiteMapNode title="About" controller="Home" action="About" />
       <mvcSiteMapNode title="Contact" controller="Home" action="Contact"/>
-    </mvcSiteMapNode>
+    </mvcSiteMapNode>  
   </mvcSiteMapNode>
 
 </mvcSiteMap>

@@ -171,13 +171,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BootstrapController.cs" />
+    <Compile Include="Controllers\DocumentationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DocumentationModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +189,26 @@
     <Content Include="Content\bootstrap\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="Content\docs.css" />
+    <Content Include="Content\google-code-prettify\lang-apollo.js" />
+    <Content Include="Content\google-code-prettify\lang-clj.js" />
+    <Content Include="Content\google-code-prettify\lang-css.js" />
+    <Content Include="Content\google-code-prettify\lang-go.js" />
+    <Content Include="Content\google-code-prettify\lang-hs.js" />
+    <Content Include="Content\google-code-prettify\lang-lisp.js" />
+    <Content Include="Content\google-code-prettify\lang-lua.js" />
+    <Content Include="Content\google-code-prettify\lang-ml.js" />
+    <Content Include="Content\google-code-prettify\lang-n.js" />
+    <Content Include="Content\google-code-prettify\lang-proto.js" />
+    <Content Include="Content\google-code-prettify\lang-scala.js" />
+    <Content Include="Content\google-code-prettify\lang-sql.js" />
+    <Content Include="Content\google-code-prettify\lang-tex.js" />
+    <Content Include="Content\google-code-prettify\lang-vb.js" />
+    <Content Include="Content\google-code-prettify\lang-vhdl.js" />
+    <Content Include="Content\google-code-prettify\lang-wiki.js" />
+    <Content Include="Content\google-code-prettify\lang-xq.js" />
+    <Content Include="Content\google-code-prettify\lang-yaml.js" />
+    <Content Include="Content\google-code-prettify\prettify.css" />
+    <Content Include="Content\google-code-prettify\prettify.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -315,8 +336,8 @@
     <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
-    <Content Include="Views\Bootstrap\Index.cshtml" />
-    <Content Include="Views\Bootstrap\BaseCss.cshtml" />
+    <Content Include="Views\Documentation\Index.cshtml" />
+    <Content Include="Views\Documentation\Forms.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

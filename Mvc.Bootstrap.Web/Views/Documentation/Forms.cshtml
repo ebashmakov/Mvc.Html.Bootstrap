@@ -1,0 +1,105 @@
+﻿@using Mvc.Html.Bootstrap
+@model Mvc.Bootstrap.Web.Models.SampleModel
+@{
+    ViewBag.Title = "BaseCss";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head {
+    @Styles.Render("~/Content/google-code-prettify/prettify.css")
+    @Styles.Render("~/Content/docs.css")
+
+}
+@section scripts {
+    @Scripts.Render("~/Content/google-code-prettify/prettify.js")
+    <script>
+        $(document).ready(function () {
+            prettyPrint();
+        });
+    </script>
+}
+<div class="row">
+    <div class="span3">
+        <div data-spy="affix"">
+            <ul class="nav nav-tabs nav-stacked bs-docs-sidenav">
+                <li><a href="#beginform"><i class="icon-chevron-right"></i>BeginForm</a></li>
+                <li><a href="#controlgroupfor"><i class="icon-chevron-right"></i>ControlGroupFor</a></li>
+                <li><a href="#bootstrapvalidationsummary"><i class="icon-chevron-right"></i>BootstrapValidationSummary</a></li>
+            </ul>
+        </div>
+        <p>&nbsp;</p>
+    </div>
+    <div class="span9">
+        <h1>Forms</h1>
+        <section id="beginform">
+            
+            <h2>FormExtensions.BeginForm</h2>
+            <p>Writes an opening <code>&lt;form&gt;</code> tag to the response using the Bootstrap form types.  When the user submits the form, the request will be processed by an action method.</p>
+            <p>This method is overloaded.  For complete information about the overloaded methods see the examples below.</p>
+            <p>Available Bootstrap FormTypes:</p>
+            <ul>
+                <li>Default</li>
+                <li>Horizontal</li>
+                <li>Inline</li>
+                <li>Search</li>
+            </ul>
+            <div class="bs-docs-example">
+            @using (Html.BeginForm(FormType.Horizontal)) {    
+                <fieldset>
+                    <legend>FormType.Horizontal</legend>
+                        <div class="control-group">
+                            <label class="control-label" for="inputSample">Label name</label>
+                            <div class="controls">
+                                <input type="text" id="inputSample" placeholder="Type something..." />
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
+                </fieldset>
+            }
+            </div>
+<pre class="prettyprint lang-html linenums">&#64;using (Html.BeginForm(FormType.Horizontal)) {    
+    &lt;fieldset&gt;
+        &lt;legend&gt;Legend&lt;/legend&gt;
+            &lt;div class=&quot;control-group&quot;&gt;
+                &lt;label class=&quot;control-label&quot; for=&quot;inputSample&quot;&gt;Label name&lt;/label&gt;
+                &lt;div class=&quot;controls&quot;&gt;
+                    &lt;input type=&quot;text&quot; id=&quot;inputSample&quot; placeholder=&quot;Type something...&quot; /&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-actions&quot;&gt;
+                &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Submit&lt;/button&gt;
+            &lt;/div&gt;
+    &lt;/fieldset&gt;
+}</pre>
+        </section>
+        <section id="controlgroupfor">
+            <h2>FormExtensions.ControlGroupFor</h2>
+            <p>Returns a Bootstrap <code>control-group</code> for each property in the object that is represented by the <code>Expression</code> expression.</p>
+            <p><code>control-group</code> are primarely used with horizontal forms.</p>
+            <div class="bs-docs-example">
+            @using (Html.BeginForm(FormType.Horizontal)) {    
+                <fieldset>
+                    <legend>&#64;Html.ControlGroupFor(m => m.Sample)</legend>
+                        @Html.ControlGroupFor(m => m.Sample)
+                        <div class="form-actions">
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
+                </fieldset>
+            }
+            </div>
+<pre class="prettyprint lang-html linenums">&#64;using (Html.BeginForm(FormType.Horizontal)) {    
+    &lt;fieldset&gt;
+        &lt;legend&gt;&amp;#64;Html.ControlGroupFor(m => m.Sample)&lt;/legend&gt;
+            &#64;Html.ControlGroupFor(m =&gt; m.Sample)
+            &lt;div class=&quot;form-actions&quot;&gt;
+                &lt;button type=&quot;submit&quot; class=&quot;btn&quot;&gt;Submit&lt;/button&gt;
+            &lt;/div&gt;
+    &lt;/fieldset&gt;
+}</pre>
+            </section>
+            <section id="bootstrapvalidationsummary">
+                <h2>BootstrapValidationSummary</h2>
+            </section>
+    </div>
+</div>

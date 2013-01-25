@@ -2,6 +2,14 @@
 /* Bootstrap code examples
 -------------------------------------------------- */
 
+span.code {
+    padding: 2px 4px;
+    color: #d14;
+    white-space: nowrap;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+}
+
 /* Base class */
 .bs-docs-example {
   position: relative;
@@ -91,4 +99,24 @@
 }
 form.bs-docs-example {
   padding-bottom: 19px;
+}
+
+.bs-docs-sidenav {
+    margin-top: 20px;
+}
+.bs-docs-sidenav .icon-chevron-right {
+    float: right;
+    margin-top: 2px;
+    margin-right: -6px;
+    opacity: .25;
+}
+/* google-code-prettify theme
+-------------------------------------------------- */
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE; } /* IE indents via margin-left */
+li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: decimal }
+/* Alternate shading for lines */
+li.L1,li.L3,li.L5,li.L7,li.L9 { }
+pre.prettyprint {
+
 }
