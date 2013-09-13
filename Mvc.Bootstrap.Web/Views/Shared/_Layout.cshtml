@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/bootstrap/css")
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/bootstrap-responsive/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @RenderSection("head", required: false)
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </a>
+                    @Html.ActionLink("Mvc.Html.Bootstrap", "Index", new {controller = "Home"}, new { @class = "brand" })
+                    <div class="nav-collapse collapse">
+                        @Html.MvcSiteMap().Menu()
+                        @Html.Partial("_LoginPartial")
+                    </div><!--/nav-collapse -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid">
+            @RenderSection("featured", required: false)
+
+            @RenderBody()
+
+            <footer>
+                <p>&copy; @DateTime.Now.Year</p>
+            </footer>
+        </div><!--/fluid-container-->
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

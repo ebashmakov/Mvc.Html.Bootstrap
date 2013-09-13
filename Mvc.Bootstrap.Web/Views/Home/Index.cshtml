@@ -1,0 +1,51 @@
+﻿@using Mvc.Html.Bootstrap
+@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="hero-unit">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+                <p>
+                    To learn more about ASP.NET MVC visit
+                    <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+                    The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
+                    If you have any questions about ASP.NET MVC visit
+                    <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
+                </p>
+                <p>@Html.Button("Learn more »", ButtonType.Primary, ButtonSize.Large)</p>
+            </div>
+        </div><!--/span-->
+    </div><!--/row-->
+}
+<div class="row-fluid">
+    <div class="span12">
+        <h3>We suggest the following:</h3>
+        <div class="row-fluid">
+            <div class="span4">
+                <h3>Getting Started</h3>
+                <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and that gives you full control over markup
+                for enjoyable, agile development. ASP.NET MVC includes many features that enable
+                fast, TDD-friendly development for creating sophisticated applications that use
+                the latest web standards.
+                </p>
+                @Html.Button("Learn more…",ButtonTag.Anchor,new {href="http://go.microsoft.com/fwlink/?LinkId=245151"})
+            </div><!--/span-->
+            <div class="span4">
+                <h3>Add NuGet packages</h3>
+                <p>NuGet makes it easy to install and update free libraries and tools.</p>
+                @Html.Button("Learn more…",ButtonTag.Anchor,new {href="http://go.microsoft.com/fwlink/?LinkId=245153"})
+            </div><!--/span-->
+            <div class="span4">
+                <h3>Find Web Hosting</h3>
+                <p>You can easily find a web hosting company that offers the right mix of features
+                and price for your applications.</p>
+                @Html.Button("Learn more…",ButtonTag.Anchor,new {href="http://go.microsoft.com/fwlink/?LinkId=245157"})
+            </div><!--/span-->
+        </div><!--/row-->
+    </div><!--/span-->
+</div><!--/row-->

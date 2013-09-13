@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace Mvc.Html.Bootstrap
 {
@@ -52,6 +54,9 @@ namespace Mvc.Html.Bootstrap
 
         public static MvcHtmlString Alert(this HtmlHelper helper, AlertType type, string text, string header, ButtonTag? closeButton, bool block)
         {
+            if (string.IsNullOrEmpty(text))
+                return new MvcHtmlString(string.Empty);
+
             var builder = new TagBuilder("div");
 
             if (block) builder.AddCssClass("alert-block");
@@ -76,12 +81,13 @@ namespace Mvc.Html.Bootstrap
 
         public static MvcHtmlString DismissButton(this HtmlHelper html, ButtonTag tag)
         {
-            return html.Button(DefaultCloseSymbol, tag, new { @class = "close", data_dismiss = "alert" });
+
+            return html.DismissButton(tag, DefaultCloseSymbol);
         }
 
         public static MvcHtmlString DismissButton(this HtmlHelper html, ButtonTag tag, string text)
         {
-            return html.Button(text, tag, new { @class = "close", data_dismiss = "alert" });
+            return html.Button(text, tag, new Dictionary<string, Object> { { "class", "close" }, { "data-dismiss", "alert" } });
         }
     }
 }
